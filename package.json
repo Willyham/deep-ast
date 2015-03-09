@@ -1,0 +1,17 @@
+{
+  "name": "deep-ast",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Will Demaine <willyd@uber.com>",
+  "license": "ISC",
+  "dependencies": {
+    "clone": "^1.0.1",
+    "esprima": "^1.2.5",
+    "traverse": "^0.6.6",
+    "xtend": "^4.0.0"
+  }
+}
