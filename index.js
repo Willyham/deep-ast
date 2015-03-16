@@ -8,6 +8,8 @@ var extend = require('xtend');
 var esprima = require('esprima');
 var traverse = require('traverse');
 
+var resolve = require('resolve');
+
 var defaults = {
   includeExternalDependencies: false
 };
@@ -26,9 +28,10 @@ function getDeepAST(filename, options) {
     if (!path.extname(filename)) {
       filename += '.js';
     }
+    var fileDir = path.dirname(filename);
     var content = fs.readFileSync(filename, 'utf-8');
     var ast = esprima.parse(content);
-    return replaceRequires(ast, options);
+    return replaceRequires(ast, fileDir, options);
   } catch (ex) {
     return ex;
   }
@@ -37,16 +40,22 @@ function getDeepAST(filename, options) {
 /**
  * Replace requires in the AST with the respective ASTs loaded from that file
  * @param {Object} ast An esprima AST
+ * @param {String} fileDir the directory of the ast's source file
  * @param {Object} options extra options
  * @returns {Object} A new AST
  */
-function replaceRequires(ast, options) {
+function replaceRequires(ast, fileDir, options) {
   return traverse(ast).forEach(function replaceRequire(node) {
-    if (options.includeExternalDependencies && isRequireStatement(node)) {
-      return this.update(getDeepAST(getRequirePath(node), options));
+    if (!isRequireStatement(node)) {
+      return;
     }
     if (isRelativeRequire(node)) {
-      return this.update(getDeepAST(getRequirePath(node), options));
+      var filename = path.resolve(fileDir, getRequirePath(node));
+      this.update(getDeepAST(filename, options));
+    }
+    if (options.includeExternalDependencies) {
+      var moduleFile = resolve.sync(getRequirePath(node));
+      this.update(getDeepAST(moduleFile, options));
     }
   });
 }
