@@ -1,4 +1,5 @@
 'use strict';
+
 var fs = require('fs');
 var test = require('tape');
 var esprima = require('esprima');

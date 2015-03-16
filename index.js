@@ -7,7 +7,6 @@ var clone = require('clone');
 var extend = require('xtend');
 var esprima = require('esprima');
 var traverse = require('traverse');
-
 var resolve = require('resolve');
 
 var defaults = {
