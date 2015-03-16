@@ -52,6 +52,7 @@ function replaceRequires(ast, fileDir, options) {
     if (isRelativeRequire(node)) {
       var filename = path.resolve(fileDir, getRequirePath(node));
       this.update(getDeepAST(filename, options));
+      return;
     }
     if (options.includeExternalDependencies) {
       var moduleFile = resolve.sync(getRequirePath(node));

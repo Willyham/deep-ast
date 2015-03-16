@@ -4,8 +4,8 @@
 var b = require('../b.js');
 
 // Cover third party modules
-var esprima = require('esprima');
+var extend = require('xtend');
 
 module.exports = function a() {
-  return esprima.parse(b.toString());
+  return extend({}, {b: b});
 };
