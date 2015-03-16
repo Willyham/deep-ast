@@ -1,6 +1,8 @@
 # deep-ast
 Get an AST with require statements resolved into respective ASTs
 
+NOTE: This module uses synchronous I/O and should not be used at run-time in a service.
+
 # API
 
 readFile : (
