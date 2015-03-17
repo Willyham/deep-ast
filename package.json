@@ -11,6 +11,10 @@
     "view-cover": "istanbul report html && opn ./coverage/index.html"
   },
   "author": "Will Demaine <willyd@uber.com>",
+  "repository": { 
+    "type": "git", 
+    "url": "http://github.com/npm/npm.git"
+  },
   "license": "ISC",
   "dependencies": {
     "clone": "^1.0.1",
