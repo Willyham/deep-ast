@@ -4,7 +4,7 @@ Get an AST with require statements resolved into respective ASTs
 
 NOTE: This module uses synchronous I/O and should not be used at request time in a service.
 
-# API
+## API
 
 ```ocaml
 readFile : (
@@ -19,12 +19,12 @@ Passing `includeExternalDependencies` will cause the ASTs of 3rd party modules t
 is a recursive algorithm, so the dependencies of each depdendency will also be parsed. As a warning, setting this flag
 to true can produce extremely large ASTs.
 
-# Usage
+## Usage
 
 var deepAST = require('deep-ast');
 var AST = deepAST('./myModule.js');
 
-# Examples
+## Examples
 
 Take the file structure where module 'a' requires module 'b' like so:
 
@@ -139,44 +139,44 @@ Like so:
 
 ```json
 {
-  type: 'Program',
-  body: [{
-    type: 'VariableDeclaration',
-    declarations: [{
-      type: 'VariableDeclarator',
-      id: {type: 'Identifier', name: 'b'},
-      init: {
-        type: 'Program',
-        body: [{
-          type: 'ExpressionStatement',
-          expression: {
-            type: 'AssignmentExpression',
-            operator: '=',
-            left: {
-              type: 'MemberExpression',
-              computed: false,
-              object: {type: 'Identifier', name: 'module'},
-              property: {type: 'Identifier', name: 'exports'}
+  "type": "Program",
+  "body": [{
+    "type": "VariableDeclaration",
+    "declarations": [{
+      "type": "VariableDeclarator",
+      "id": {"type": "Identifier", name: "b"},
+      "init": {
+        "type": "Program",
+        "body": [{
+          "type": "ExpressionStatement",
+          "expression": {
+            "type": "AssignmentExpression",
+            "operator": "=",
+            "left": {
+              "type": "MemberExpression",
+              "computed": false,
+              "object": {"type": "Identifier", "name": "module"},
+              "property": {"type": "Identifier", "name": "exports"}
             },
-            right: {type: 'Literal', value: 'panic', raw: '\'panic\''}
+            "right": {"type": "Literal", "value": "panic", "raw": "panic"}
           }
         }]
       }
     }],
-    kind: 'var'
+    "kind": "var"
   },
   {
-    type: 'ExpressionStatement',
-    expression: {
-      type: 'AssignmentExpression',
-      operator: '=',
-      left: {
-        type: 'MemberExpression',
-        computed: false,
-        object: {type: 'Identifier', name: 'module'},
-        property: {type: 'Identifier', name: 'exports'}
+    "type": "ExpressionStatement",
+    "expression": {
+      "type": "AssignmentExpression",
+      "operator": "=",
+      "left": {
+        "type": "MemberExpression",
+        "computed": false,
+        "object": {"type": "Identifier", "name": "module"},
+        "property": {"type": "Identifier", "name": "exports"}
       },
-      right: {type: 'Literal', value: 'dont', raw: '\'dont\''}
+      "right": {"type": "Literal", "value": "dont", "raw": "dont"}
     }
   }]
 }
