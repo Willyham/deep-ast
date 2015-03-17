@@ -13,7 +13,7 @@
   "author": "Will Demaine <willyd@uber.com>",
   "repository": { 
     "type": "git", 
-    "url": "http://github.com/npm/npm.git"
+    "url": "http://github.com/Willyham/deep-ast.git"
   },
   "license": "ISC",
   "dependencies": {
