@@ -1,4 +1,4 @@
-# deep-ast [![Travis branch](https://img.shields.io/travis/Willyham/deep-ast.svg)]() [![Coverage Status](https://coveralls.io/repos/Willyham/deep-ast/badge.svg)](https://coveralls.io/r/Willyham/deep-ast)
+# deep-ast [![Travis branch](https://img.shields.io/travis/Willyham/deep-ast.svg)]()
 
 Get an AST with require statements resolved into respective ASTs
 
@@ -6,12 +6,14 @@ NOTE: This module uses synchronous I/O and should not be used at request time in
 
 # API
 
+```ocaml
 readFile : (
   filename: String,
   options?: {
     includeExternalDependencies?: Boolean(true)
   }
 ) => Object
+```
 
 Passing `includeExternalDependencies` will cause the ASTs of 3rd party modules to also be parsed. Note that this
 is a recursive algorithm, so the dependencies of each depdendency will also be parsed. As a warning, setting this flag
