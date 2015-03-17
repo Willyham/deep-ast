@@ -1,5 +1,4 @@
-# deep-ast
-[![Travis branch](https://img.shields.io/travis/Willyham/deep-ast.svg)]() [![Coverage Status](https://coveralls.io/repos/Willyham/deep-ast/badge.svg)](https://coveralls.io/r/Willyham/deep-ast)
+# deep-ast [![Travis branch](https://img.shields.io/travis/Willyham/deep-ast.svg)]() [![Coverage Status](https://coveralls.io/repos/Willyham/deep-ast/badge.svg)](https://coveralls.io/r/Willyham/deep-ast)
 
 Get an AST with require statements resolved into respective ASTs
 
